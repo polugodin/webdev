@@ -11,6 +11,7 @@ module.exports = withNextra({
     loader: 'custom',
     loaderFile: './imagesLoader.ts',
   },
+  basePath: '/webdev',
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.mdx?/,
