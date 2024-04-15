@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
-import { Logo } from '@/components/Logo'
+import { Logo } from '@/src/components/nextra/Logo'
 
 export default {
   logo: <Logo />,
-  primaryHue: 202,
-  primarySaturation: 80,
+  primaryHue: 28,
+  primarySaturation: 65,
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {

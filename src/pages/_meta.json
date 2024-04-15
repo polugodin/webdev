@@ -1,0 +1,8 @@
+{
+  "index": "Test",
+  "components": "Components",
+  "hooks": "Hooks",
+  "utils": "Utils",
+  "javascript": "Javascript",
+  "typescript": "Typescript"
+}

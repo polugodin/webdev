@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "next --port 4000",
+    "start": "next --port 4000",
     "build": "next build"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.75.0",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {

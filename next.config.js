@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production'
+
 const withNextra = require('nextra')({
   defaultShowCopyCode: true,
   theme: 'nextra-theme-docs',
@@ -5,17 +7,21 @@ const withNextra = require('nextra')({
 })
 
 module.exports = withNextra({
-  output: 'export',
-  images: {
-    unoptimized: true,
-    loader: 'custom',
-    loaderFile: './imagesLoader.ts',
-  },
-  basePath: '/webdev',
+  ...(isProd
+    ? {
+        output: 'export',
+        images: {
+          unoptimized: true,
+          loader: 'custom',
+          loaderFile: './src/utils/nextra/imageLoader.js',
+        },
+        basePath: '/webdev',
+      }
+    : undefined),
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.mdx?/,
-      use: ['./utils/sourceCodeLoader.js'],
+      use: ['./src/utils/nextra/sourceCodeLoader.js'],
     })
 
     return config

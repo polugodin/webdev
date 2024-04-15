@@ -1,0 +1,18 @@
+.logo {
+  animation: logoAnim 400ms ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  transform: translateY(6px);
+  display: inline-block;
+}
+
+@keyframes logoAnim {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

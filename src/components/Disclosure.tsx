@@ -1,5 +1,5 @@
-import { PropsWithChildren, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { cn } from '@/utils/cn'
+import { PropsWithChildren, useLayoutEffect, useRef, useState } from 'react'
+import { cn } from '@/src/utils/cn'
 
 interface DisclosureProps extends PropsWithChildren {
   open: boolean
@@ -7,15 +7,17 @@ interface DisclosureProps extends PropsWithChildren {
   mount?: boolean
   afterHide?: () => void
   className?: string
+  overflowVisibleWhenOpen?: boolean
 }
 
 export const Disclosure = ({
   children,
   open,
   transitionDuration = 250,
-  mount,
+  mount = false,
   afterHide,
   className,
+  overflowVisibleWhenOpen = false,
 }: DisclosureProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [render, setRender] = useState(open || mount)
@@ -24,7 +26,9 @@ export const Disclosure = ({
     if (open) {
       if (containerRef.current) {
         containerRef.current.style.height = 'auto'
-        containerRef.current.style.overflow = 'visible'
+        if (overflowVisibleWhenOpen) {
+          containerRef.current.style.overflow = 'visible'
+        }
       }
     } else {
       if (!mount) {

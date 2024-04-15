@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { isProd } from '@/utils/isProd'
+import { isProd } from '@/src/utils/isProd'
 import { ClientRender } from './ClientRender'
 import { ClientRenderWithDisclosure } from './ClientRenderWithDisclosure'
 

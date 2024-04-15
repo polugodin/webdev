@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Disclosure } from '@/components/Disclosure'
+import { Disclosure } from '../Disclosure'
 
 export const DisclosureDemo = () => {
   const [open, setOpen] = useState(false)
@@ -9,6 +9,7 @@ export const DisclosureDemo = () => {
       <button className="p-2 w-full" onClick={() => setOpen((p) => !p)}>
         Toggle
       </button>
+
       <Disclosure open={open}>
         <div className="p-2 border-t border-black dark:border-white text-center">
           📦
