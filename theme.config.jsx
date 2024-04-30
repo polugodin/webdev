@@ -33,4 +33,5 @@ export default {
     backToTop: true,
     extraContent: <></>,
   },
+  gitTimestamp: null,
 }
