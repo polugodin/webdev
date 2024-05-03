@@ -8,7 +8,7 @@ export function getClosestScrollableElement(
   }
 ) {
   let parent = child.parentElement
-  while (parent && parent !== document.body) {
+  while (parent && parent !== document.documentElement) {
     const parentStyle = getComputedStyle(parent)
     const overflows = ['auto', 'scroll']
 
@@ -31,6 +31,6 @@ export function getClosestScrollableElement(
 
     parent = parent.parentElement
   }
-  return document.body
+  return document.documentElement
 }
 ```
