@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { Logo } from '@/src/components/nextra/Logo';
+import { isProd } from '@/src/utils/isProd';
 
 export default {
   logo: <Logo />,
@@ -7,7 +8,7 @@ export default {
   primarySaturation: 65,
   head: (
     <>
-      <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
+      <link rel='icon' href={isProd ? '/webdev/favicon.svg' : '/favicon.svg'} type='image/svg+xml' />
     </>
   ),
   useNextSeoProps() {
