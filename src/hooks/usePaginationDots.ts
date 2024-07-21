@@ -60,6 +60,6 @@ export const usePaginationDots = ({
         index !== 0 &&
         index !== numOfPages - 1 &&
         (index === dots.from || index === dots.to),
-      active: index === dots.active,
+      isActive: index === dots.active,
     }))
 }

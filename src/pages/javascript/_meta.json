@@ -1,5 +1,6 @@
 {
-  "objects": "objects",
-  "browser": "browser",
-  "date": "date"
+  "object": "object",
+  "array": "array",
+  "date": "date",
+  "browser": "browser"
 }

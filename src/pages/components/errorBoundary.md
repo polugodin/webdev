@@ -1,3 +1,7 @@
+```shell
+yarn add react-error-boundary
+```
+
 ```tsx
 import { ErrorBoundary as ErrorBoundaryComponent, FallbackProps } from 'react-error-boundary'
 
@@ -15,3 +19,7 @@ export function ErrorBoundary({ children }: React.PropsWithChildren) {
   return <ErrorBoundaryComponent FallbackComponent={Fallback}>{children}</ErrorBoundaryComponent>
 }
 ```
+
+https://www.npmjs.com/package/react-error-boundary
+
+https://github.com/bvaughn/react-error-boundary#readme

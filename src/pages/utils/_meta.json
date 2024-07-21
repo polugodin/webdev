@@ -1,5 +1,6 @@
 {
   "cn": "cn",
   "lazy": "lazy",
-  "dom": "DOM"
+  "dom": "dom",
+  "string": "string"
 }

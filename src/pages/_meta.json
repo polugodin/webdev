@@ -1,8 +1,9 @@
 {
-  "index": "Test",
+  "index": "Intro 💎",
   "components": "components",
   "hooks": "hooks",
   "utils": "utils",
-  "javascript": "Javascript",
-  "typescript": "Typescript"
+  "javascript": "Javascript 🔶",
+  "typescript": "Typescript 🔷",
+  "styles": "styles"
 }

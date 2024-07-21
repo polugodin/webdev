@@ -1,4 +1,6 @@
 {
   "useCountdown": "useCountdown",
-  "usePaginationDots": "usePaginationDots"
+  "usePaginationDots": "usePaginationDots",
+  "useModalControl": "useModalControl",
+  "useStateRef": "useStateRef"
 }
