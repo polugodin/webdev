@@ -3,6 +3,12 @@ import { cn } from '@/src/utils/cn';
 import { CSSProperties, useCallback, useMemo } from 'react';
 import styles from './card.module.scss';
 
+import reactLogo from '@/public/cards/react.svg';
+import reduxToolkitLogo from '@/public/cards/redux-toolkit.svg';
+import tailwindcssLogo from '@/public/cards/tailwindcss.svg';
+import zustandLogo from '@/public/cards/zustand.png';
+import shadcnuiLogo from '@/public/cards/shadcnui.png';
+
 type Card = {
   name: string;
   hue?: number;
@@ -23,40 +29,32 @@ const CARDS: Card[] = [
   {
     name: 'React',
     hue: 191,
-    img: '/cards/react.svg',
+    img: reactLogo.src,
     href: 'https://react.dev/reference/react',
   },
   {
     name: 'Redux Toolkit',
     hue: 263,
-    img: '/cards/redux-toolkit.svg',
+    img: reduxToolkitLogo.src,
     href: 'https://redux-toolkit.js.org/introduction/getting-started',
   },
   {
     name: 'Tailwind CSS',
     hue: 198.44,
-    img: '/cards/tailwindcss.svg',
+    img: tailwindcssLogo.src,
     href: 'https://tailwindcss.com/docs/guides/vite',
   },
   {
     name: 'Zustand',
     hue: 11,
-    img: '/cards/zustand.png',
+    img: zustandLogo.src,
     href: 'https://docs.pmnd.rs/zustand/getting-started/introduction',
   },
   {
     name: 'shadcn/ui',
     hue: 80,
-    img: '/cards/chadcnui.png',
+    img: shadcnuiLogo.src,
     href: 'https://ui.shadcn.com/docs',
-  },
-  {
-    name: 'testaaaaaaaaaa',
-    href: '',
-  },
-  {
-    name: 'test a a a a a a a a a a',
-    href: '#',
   },
 ];
 
