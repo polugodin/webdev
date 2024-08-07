@@ -1,154 +1,130 @@
-import { Tilt } from '@/src/components/Tilt';
-import { cn } from '@/src/utils/cn';
-import { CSSProperties, useCallback, useMemo } from 'react';
-import styles from './card.module.scss';
-
-import reactLogo from '@/public/cards/react.svg';
-import reduxToolkitLogo from '@/public/cards/redux-toolkit.svg';
-import tailwindcssLogo from '@/public/cards/tailwindcss.svg';
-import zustandLogo from '@/public/cards/zustand.png';
-import shadcnuiLogo from '@/public/cards/shadcnui.png';
+import reactLogo from '@/public/icons/react.svg'
+import nextraLogo from '@/public/icons/nextra.svg'
+import nextraDarkLogo from '@/public/icons/nextraDark.svg'
+import reduxToolkitLogo from '@/public/icons/redux-toolkit.svg'
+import tailwindcssLogo from '@/public/icons/tailwindcss.svg'
+import zustandLogo from '@/public/icons/zustand.png'
+import shadcnuiLogo from '@/public/icons/shadcnui.png'
+import tanstackQueryLogo from '@/public/icons/tanstackQuery.png'
+import { cn } from '@/src/utils/cn'
 
 type Card = {
-  name: string;
-  hue?: number;
-  img?: string;
-  href: string;
-};
-
-function hslColor(hue: number | undefined, s: number, l: number, a?: number) {
-  return `hsl(${hue ?? 0}deg ${hue === undefined ? 0 : s}% ${l}%${a !== undefined ? ` / ${a}%` : ''})`;
+  name: string
+  icon: string
+  iconDark?: string
+  description?: string
+  href: string
 }
 
-interface CardCSSProperties extends CSSProperties {
-  '--card-shadow': string;
-  '--card-shadow-hover': string;
+type CollectionNames = 'frameworks' | 'stateManagementAndQuery' | 'style' | 'components'
+
+const collection: Record<CollectionNames, Card[]> = {
+  frameworks: [
+    {
+      name: 'React',
+      icon: reactLogo.src,
+      description: 'The library for web and native user interfaces',
+      href: 'https://react.dev/reference/react',
+    },
+    {
+      name: 'Nextra Docs Theme',
+      icon: nextraLogo.src,
+      iconDark: nextraDarkLogo.src,
+      description: 'A theme that includes almost everything you need to build a modern documentation website',
+      href: 'https://nextra.site/docs/docs-theme/start',
+    },
+  ],
+  stateManagementAndQuery: [
+    {
+      name: 'Redux Toolkit',
+      icon: reduxToolkitLogo.src,
+      description: 'The official, opinionated, batteries-included toolset for efficient Redux development',
+      href: 'https://redux-toolkit.js.org/introduction/getting-started',
+    },
+    {
+      name: 'Zustand',
+      icon: zustandLogo.src,
+      description: 'A small, fast and scalable state-management solution using simplified flux principles',
+      href: 'https://docs.pmnd.rs/zustand/getting-started/introduction',
+    },
+    {
+      name: 'TanStack Query',
+      icon: tanstackQueryLogo.src,
+      description: 'Data-fetching library for web applications',
+      href: 'https://tanstack.com/query/latest/docs/framework/react/overview',
+    },
+  ],
+  style: [
+    {
+      name: 'Tailwind CSS',
+      icon: tailwindcssLogo.src,
+      description: 'Rapidly build modern websites without ever leaving your HTML',
+      href: 'https://tailwindcss.com/docs/guides/vite',
+    },
+  ],
+  components: [
+    {
+      name: 'shadcn/ui',
+      icon: shadcnuiLogo.src,
+      description: 'Beautifully designed components that you can copy and paste into your apps.',
+      href: 'https://ui.shadcn.com/docs',
+    },
+  ],
 }
 
-const CARDS: Card[] = [
-  {
-    name: 'React',
-    hue: 191,
-    img: reactLogo.src,
-    href: 'https://react.dev/reference/react',
-  },
-  {
-    name: 'Redux Toolkit',
-    hue: 263,
-    img: reduxToolkitLogo.src,
-    href: 'https://redux-toolkit.js.org/introduction/getting-started',
-  },
-  {
-    name: 'Tailwind CSS',
-    hue: 198.44,
-    img: tailwindcssLogo.src,
-    href: 'https://tailwindcss.com/docs/guides/vite',
-  },
-  {
-    name: 'Zustand',
-    hue: 11,
-    img: zustandLogo.src,
-    href: 'https://docs.pmnd.rs/zustand/getting-started/introduction',
-  },
-  {
-    name: 'shadcn/ui',
-    hue: 80,
-    img: shadcnuiLogo.src,
-    href: 'https://ui.shadcn.com/docs',
-  },
-];
-
-export function Cards() {
-  return (
-    <div className='flex flex-wrap gap-4'>
-      {CARDS.map((card, i) => (
-        <Card key={card.name} card={card} index={i} />
+const createCardsComponent = (cards: Card[]) => () =>
+  (
+    <div
+      className={cn(
+        'grid',
+        'grid-cols-1 gap-x-2 gap-y-2 mt-6 mb-8',
+        'sm:grid-cols-2 sm:gap-x-6 sm:gap-y-0 sm:mt-7 sm:mb-10',
+        'md:grid-cols-1 md:gap-x-2 md:gap-y-2 md:mt-6 md:mb-8',
+        'lg:grid-cols-2 lg:gap-x-6 lg:gap-y-0 lg:mt-7 lg:mb-10',
+      )}
+    >
+      {cards.map((card) => (
+        <Card key={card.name} card={card} />
       ))}
     </div>
-  );
-}
+  )
 
-function Card({ card }: { card: Card; index: number }) {
-  const slColor = useCallback((...args: [s: number, l: number, a?: number]) => hslColor(card.hue, ...args), []);
+export const CardsFrameworks = createCardsComponent(collection.frameworks)
+export const CardsStateManagementAndQuery = createCardsComponent(collection.stateManagementAndQuery)
+export const CardsStyle = createCardsComponent(collection.style)
+export const CardsComponents = createCardsComponent(collection.components)
 
-  const CSS_VARS = useMemo(() => {
-    // shadow config
-    const smallSL = [80, 60] as const;
-    const bigSL = [90, 50] as const;
-    const smallAlpha = 80;
-    const bigAlpha = 60;
-
-    return {
-      shadow: `0 0 10px ${slColor(...smallSL, 0)}, 0 0 40px ${slColor(...bigSL, 0)}`,
-      shadowHover: `0 0 10px ${slColor(...smallSL, smallAlpha)}, 0 0 40px ${slColor(...bigSL, bigAlpha)}`,
-      border: `1px solid ${slColor(80, 60)}`,
-      cardBackgroundColor: slColor(40, 30),
-      frontBackgroundColor: slColor(70, 40, 40),
-      nameBackgroundColor: slColor(40, 20, 80),
-    };
-  }, []);
-
+function Card({ card }: { card: Card }) {
   return (
-    <Tilt
-      // options={defaultOptions}
-      className='w-[80px] h-[116px] rounded-md [transform-style:preserve-3d] relative select-none'
+    <a
+      href={card.href}
+      target='_blank'
+      className={cn(
+        'group flex gap-6 rounded-lg text-sm leading-6 hover:bg-gray-50 dark:hover:bg-[rgb(20_20_20)]',
+        'flex-row p-3',
+        'sm:flex-col sm:p-6',
+        'md:flex-row md:p-3',
+        'lg:flex-col lg:p-6',
+      )}
     >
-      <a
-        href={card.href}
-        target='_blank'
-        className={cn('block w-full h-full [transform-style:preserve-3d] rounded-md', styles.card)}
-        style={
-          {
-            backgroundColor: CSS_VARS.cardBackgroundColor,
-            border: CSS_VARS.border,
-            '--card-shadow': CSS_VARS.shadow,
-            '--card-shadow-hover': CSS_VARS.shadowHover,
-          } as CardCSSProperties
-        }
+      <div
+        className={cn(
+          'flex size-11 flex-none justify-center items-center rounded-lg',
+          'bg-gray-50 group-hover:bg-white dark:bg-[rgb(20_20_20)] dark:group-hover:bg-[rgb(17_17_17)]',
+        )}
       >
-        {/* back image */}
-        <div className='absolute inset-2 flex flex-col justify-center rounded-md'>
-          <div
-            className='bg-contain bg-no-repeat bg-center opacity-10 aspect-square'
-            style={{ backgroundImage: `url(${card.img})` }}
-          />
-        </div>
-
-        {/* front */}
-        <div
-          className='absolute inset-0 [transform:translateZ(10px)] flex flex-col items-stretch justify-center rounded-md overflow-hidden'
-          style={{
-            border: CSS_VARS.border,
-            backgroundColor: CSS_VARS.frontBackgroundColor,
-          }}
-        >
-          {/* icon */}
-          <div className='grow flex justify-center items-center'>
-            <div
-              className='size-12 bg-contain bg-no-repeat bg-center rounded'
-              style={{ backgroundImage: `url(${card.img})` }}
-            />
-          </div>
-
-          {/* name */}
-          <div
-            className='h-[36px] p-1 flex justify-center items-center'
-            style={{
-              backgroundColor: CSS_VARS.nameBackgroundColor,
-              borderTop: CSS_VARS.border,
-            }}
-          >
-            <div
-              className='px-1 line-clamp-2 text-center text-[12px]/[14px] text-white'
-              style={{
-                textShadow: '0 1px 1px black',
-              }}
-            >
-              {card.name}
-            </div>
-          </div>
-        </div>
-      </a>
-    </Tilt>
-  );
+        <img
+          className={cn('flex-none size-6 pointer-events-none object-contain', card.iconDark && 'dark:hidden')}
+          src={card.icon}
+        />
+        {card.iconDark && (
+          <img className='flex-none size-6 pointer-events-none object-contain hidden dark:block' src={card.iconDark} />
+        )}
+      </div>
+      <div>
+        <span className='font-semibold text-gray-900 dark:text-gray-100'>{card.name}</span>
+        {card.description && <p className='mt-1 text-gray-600 dark:text-gray-400'>{card.description}</p>}
+      </div>
+    </a>
+  )
 }

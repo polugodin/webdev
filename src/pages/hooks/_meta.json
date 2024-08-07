@@ -2,5 +2,6 @@
   "useCountdown": "useCountdown",
   "usePaginationDots": "usePaginationDots",
   "useModalControl": "useModalControl",
-  "useStateRef": "useStateRef"
+  "useStateRef": "useStateRef",
+  "useUpdateEffect": "useUpdateEffect"
 }

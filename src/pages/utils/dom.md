@@ -1,13 +1,15 @@
 ### Closest scrollable element
 
+returns closet parent with overflow `auto` or `scroll`
+
 ```ts
 export function getClosestScrollableElement(
-  child: HTMLElement,
+  element: HTMLElement,
   settings?: {
     axis?: 'x' | 'y' | 'both' // default: any axis
-  }
+  },
 ) {
-  let parent = child.parentElement
+  let parent = element.parentElement
   while (parent && parent !== document.documentElement) {
     const parentStyle = getComputedStyle(parent)
     const overflows = ['auto', 'scroll']
@@ -22,10 +24,7 @@ export function getClosestScrollableElement(
       ) {
         return parent
       }
-    } else if (
-      overflows.includes(parentStyle.overflowX) ||
-      overflows.includes(parentStyle.overflowY)
-    ) {
+    } else if (overflows.includes(parentStyle.overflowX) || overflows.includes(parentStyle.overflowY)) {
       return parent
     }
 

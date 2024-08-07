@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { Logo } from '@/src/components/nextra/Logo';
-import { isProd } from '@/src/utils/isProd';
+import { useRouter } from 'next/router'
+import { Logo } from '@/src/components/nextra/Logo'
+import { isProd } from '@/src/utils/isProd'
 
 export default {
   logo: <Logo />,
@@ -12,13 +12,13 @@ export default {
     </>
   ),
   useNextSeoProps() {
-    const { asPath } = useRouter();
-    if (asPath !== '/') {
-      return {
-        titleTemplate: 'WebDev | %s',
-      };
+    const { asPath } = useRouter()
+    if (asPath === '/' || asPath.startsWith('/#')) {
+      return { title: 'WebDev', titleTemplate: '%s' }
     }
-    return { title: 'WebDev', titleTemplate: '%s' };
+    return {
+      titleTemplate: 'WebDev | %s',
+    }
   },
   search: {
     placeholder: 'Search...',
@@ -40,4 +40,4 @@ export default {
     extraContent: <></>,
   },
   gitTimestamp: null,
-};
+}

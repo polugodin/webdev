@@ -4,6 +4,14 @@
 navigator.language.slice(0, 2)
 ```
 
+### debugger
+
+```js
+setTimeout(() => {
+  debugger
+}, 3000)
+```
+
 ### before unload event
 
 ```tsx

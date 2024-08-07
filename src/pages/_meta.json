@@ -1,9 +1,11 @@
 {
-  "index": "Intro 💎",
+  "index": "Intro",
   "components": "components",
   "hooks": "hooks",
+  "react": "React",
   "utils": "utils",
   "javascript": "Javascript 🔶",
   "typescript": "Typescript 🔷",
-  "styles": "styles"
+  "styles": "styles",
+  "other": "other"
 }
