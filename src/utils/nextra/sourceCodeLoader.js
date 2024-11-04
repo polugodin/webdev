@@ -1,4 +1,3 @@
-// import path from 'path'
 const fs = require('fs')
 const path = require('path')
 

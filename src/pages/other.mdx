@@ -1,1 +1,82 @@
+## rollup-plugin-visualizer
+
+https://www.npmjs.com/package/rollup-plugin-visualizer
+
+```sh
+yarn add --dev rollup-plugin-visualizer
+```
+
+```ts filename="vite.config.ts"
+import { visualizer } from 'rollup-plugin-visualizer'
+
+export default defineConfig({
+  plugins: [visualizer()],
+})
+
+// run build
+// file: stats.html
+```
+
+## version()
+
+```ts
+// vite.config.ts
+import { version } from './package.json'
+export default defineConfig({
+  define: {
+    APP_VERSION: JSON.stringify(version),
+  },
+})
+
+// app.tsx?
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+;(window as any).version = () => {
+  // eslint-disable-next-line no-console
+  console.log(APP_VERSION)
+}
+
+// vite-env.d.ts
+declare const APP_VERSION: string
+
+// declare global {
+//   interface Window {
+//     version: () => void;
+//   }
+// }
+```
+
+## Other
+
+### is dev, is prod
+
+```sh
+yarn add -D @types/node
+```
+
+```js
+const isDev = process.env.NODE_ENV === 'development'
+// const isDev = process.env.NODE_ENV !== 'production'
+
+if (process.env.NODE_ENV === 'production') {
+  // Code will only appear in production build.
+}
+
+if (process.env.NODE_ENV !== 'production') {
+  // Code will be removed from production build.
+  console.log("Looks like you're a developer.")
+}
+```
+
+### filename, dirname
+
+```js
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+```
+
+## 1
+
 ![test](/test.jpg)

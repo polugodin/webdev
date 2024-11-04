@@ -2,5 +2,6 @@
   "object": "object",
   "array": "array",
   "date": "date",
+  "number": "number",
   "browser": "browser"
 }

@@ -24,7 +24,10 @@ export function getClosestScrollableElement(
       ) {
         return parent
       }
-    } else if (overflows.includes(parentStyle.overflowX) || overflows.includes(parentStyle.overflowY)) {
+    } else if (
+      overflows.includes(parentStyle.overflowX) ||
+      overflows.includes(parentStyle.overflowY)
+    ) {
       return parent
     }
 

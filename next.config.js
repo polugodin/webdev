@@ -18,7 +18,7 @@ module.exports = withNextra({
         basePath: '/webdev',
       }
     : undefined),
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.mdx?/,
       use: ['./src/utils/nextra/sourceCodeLoader.js'],

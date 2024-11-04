@@ -17,7 +17,7 @@ export const TiltDemo = () => {
     <div className='mt-8 grid place-items-center'>
       <Tilt
         options={defaultOptions}
-        className='w-[200px] h-[140px] bg-green-700/80 rounded-xl flex justify-center items-center text-6xl'
+        className='size-[160px] bg-green-700/80 rounded-xl flex justify-center items-center text-6xl'
       >
         🏞️
       </Tilt>

@@ -1,4 +1,4 @@
-import { PropsWithChildren, useLayoutEffect, useRef, useState } from 'react'
+import { PropsWithChildren, useLayoutEffect, useRef, useState, useCallback } from 'react'
 import { cn } from '@/src/utils/cn'
 
 interface DisclosureProps extends PropsWithChildren {
@@ -43,7 +43,7 @@ export const Disclosure = ({
     if (!container) return
 
     if (open) {
-      !mount && setRender(true)
+      if (!mount) setRender(true)
       setTimeout(() => {
         container.style.height = `${container.scrollHeight}px`
       })
