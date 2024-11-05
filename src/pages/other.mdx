@@ -28,21 +28,22 @@ export default defineConfig({
   },
 })
 
-// app.tsx?
+// main.tsx
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ;(window as any).version = () => {
   // eslint-disable-next-line no-console
   console.log(APP_VERSION)
 }
+Object.defineProperty(window, 'v', {
+  get() {
+    // @ts-expect-error window
+    window.version()
+  },
+  configurable: false,
+})
 
 // vite-env.d.ts
 declare const APP_VERSION: string
-
-// declare global {
-//   interface Window {
-//     version: () => void;
-//   }
-// }
 ```
 
 ## Other
