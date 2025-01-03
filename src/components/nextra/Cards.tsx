@@ -6,13 +6,14 @@ import reduxToolkitLogo from '@/public/icons/redux-toolkit.svg'
 import tailwindcssLogo from '@/public/icons/tailwindcss.svg'
 import lucideLogo from '@/public/icons/lucide.svg'
 import zustandLogo from '@/public/icons/zustand.png'
-import chakrauiLogo from '@/public/icons/chakraui1.svg'
+import chakrauiLogo from '@/public/icons/chakraui.svg'
 import shadcnuiLogo from '@/public/icons/shadcnui.png'
 import tanstackQueryLogo from '@/public/icons/tanstackQuery.png'
 import helloPangeaDndLogo from '@/public/icons/helloPangeaDnd.svg'
 import reactRouterLogo from '@/public/icons/reactRouter.png'
 import reactRouterDarkLogo from '@/public/icons/reactRouterDark.png'
 import nodejsLogo from '@/public/icons/nodejs.svg'
+import highchartsLogo from '@/public/icons/highcharts.svg'
 import { cn } from '@/src/utils/cn'
 
 type Card = {
@@ -28,6 +29,7 @@ type CollectionNames =
   | 'stateManagementAndQuery'
   | 'style'
   | 'components'
+  | 'visualization'
   | 'nodejs'
 
 const collection: Record<CollectionNames, Card[]> = {
@@ -116,6 +118,17 @@ const collection: Record<CollectionNames, Card[]> = {
       href: 'https://react-select.com/home',
     },
   ],
+  visualization: [
+    {
+      name: 'Highcharts',
+      href: 'https://www.highcharts.com/',
+      icon: highchartsLogo.src,
+    },
+    {
+      name: 'html-to-image',
+      href: 'https://www.npmjs.com/package/html-to-image',
+    },
+  ],
   nodejs: [
     {
       name: 'Node.js',
@@ -155,6 +168,7 @@ export const CardsReact = createCardsComponent(collection.react)
 export const CardsStateManagementAndQuery = createCardsComponent(collection.stateManagementAndQuery)
 export const CardsStyle = createCardsComponent(collection.style)
 export const CardsComponents = createCardsComponent(collection.components)
+export const CardsVisualization = createCardsComponent(collection.visualization)
 export const CardsNodejs = createCardsComponent(collection.nodejs)
 
 function Card({ card }: { card: Card }) {
@@ -163,7 +177,7 @@ function Card({ card }: { card: Card }) {
       href={card.href}
       target='_blank'
       className={cn(
-        'group flex items-center rounded-lg text-sm gap-0.5',
+        'h-10 group flex items-center rounded-lg text-sm gap-0.5',
         'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors',
         'pr-3',
         !card.icon && 'pl-3',

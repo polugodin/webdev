@@ -17,3 +17,9 @@ React.MouseEvent
 
 React.MouseEvent<HTMLSpanElement>
 ```
+
+### Typed
+
+```tsx
+export const typedMemo: <T>(c: T) => T = memo
+```

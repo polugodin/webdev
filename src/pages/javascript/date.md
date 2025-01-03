@@ -34,14 +34,14 @@ Intl.supportedValuesOf('timeZone').forEach((x) => console.log(x))
 ### Create date
 
 ```js
-// date -> UTC time 00:00
-new Date('2024-08-20')
-new Date(2024, 0, 1) // month 0-11
-
-// date + time -> local time
-new Date('2024-08-20T10:00')
-new Date(2024, 0, 1, 10)
-new Date('2024-08-20T10:00:00')
+new Date('2024-08-20') // UTC
+new Date(2024, 0, 1) // month 0-11 // local
+new Date('2024-08-20T10:00') // local
+new Date(2024, 0, 1, 10) // local
+new Date(Date.UTC(2024, 0, 1, 10)) // UTC
+new Date('2024-08-20T10:00:00') // local
+new Date('2024-08-20T00:00') // local
+new Date('2024-08-20T00') // Invalid Date
 ```
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
