@@ -3,6 +3,5 @@
   "usePaginationDots": "usePaginationDots",
   "useModalControl": "useModalControl",
   "useStateRef": "useStateRef",
-  "useUpdateEffect": "useUpdateEffect",
   "useCurrentLocation": "useCurrentLocation"
 }

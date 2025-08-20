@@ -50,6 +50,10 @@ const collection: Record<CollectionNames, Card[]> = {
       iconDark: nextraDarkLogo.src,
       href: 'https://nextra.site/docs/docs-theme/start',
     },
+    {
+      name: 'Next',
+      href: 'https://nextjs.org/docs',
+    },
   ],
   react: [
     {
@@ -61,11 +65,15 @@ const collection: Record<CollectionNames, Card[]> = {
       name: 'React Router',
       icon: reactRouterLogo.src,
       iconDark: reactRouterDarkLogo.src,
-      href: 'https://reactrouter.com/en/main',
+      href: 'https://reactrouter.com/home',
     },
     {
       name: 'Mantine Hooks',
       href: 'https://mantine.dev/hooks/use-click-outside/',
+    },
+    {
+      name: 'react-use',
+      href: 'https://streamich.github.io/react-use/',
     },
   ],
   stateManagementAndQuery: [
@@ -89,7 +97,7 @@ const collection: Record<CollectionNames, Card[]> = {
     {
       name: 'Tailwind CSS',
       icon: tailwindcssLogo.src,
-      href: 'https://tailwindcss.com/docs/guides/vite',
+      href: 'https://tailwindcss.com/docs/installation/using-vite',
     },
     {
       name: 'Lucide icons',

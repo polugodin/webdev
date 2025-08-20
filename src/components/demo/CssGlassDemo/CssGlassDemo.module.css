@@ -1,0 +1,21 @@
+.glass {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(157.87deg, hsla(0, 0%, 100%, 0.06), hsla(0, 0%, 100%, 0.024));
+  border-radius: 8px;
+  position: relative;
+}
+
+.glass::before {
+  background: linear-gradient(157.87deg, hsla(0, 0%, 100%, 0.2), hsla(0, 0%, 100%, 0.02));
+  border-radius: 8px;
+  content: '';
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  position: absolute;
+  /* width: calc(100% - 2px); */
+  z-index: -1;
+}
